@@ -1,0 +1,27 @@
+.Bio {
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: calc(90vh - 10rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .profile-picture-container {
+    height: 10rem;
+    width: 10rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 1rem 0;
+  }
+
+  p {
+    font-family: Garamond;
+    color: $font-cool;
+    font-size: 1.25rem;
+    margin: 1rem 0;
+  }
+}

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>Larissa Thayer Cullen</h1>
+    <h1>Fine Artist</h1>
   </div>
 </template>
 

@@ -1,0 +1,105 @@
+.gallery {
+  min-height: calc(90vh - 10rem);
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: inherit;
+    text-align: center;
+    font-size: 6rem;
+    color: $backgroung-light-cool;
+    i {
+      margin-bottom: 10rem;
+    }
+  }
+
+  .images-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    margin: 0 auto;
+
+    .main-image {
+      height: 25rem;
+      width: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: relative;
+      
+      .arrows {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 25rem;
+        position: absolute;
+        i {
+          font-size: 2rem;
+          color: $backgroung-light-cool;
+          transition: .3s;
+          &:hover {
+            cursor: pointer;
+            color: $font-cool;
+          }
+        }
+      }
+
+      .info {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: rgba($font-cool, .6);
+        padding: .5rem 1rem;
+
+        p {
+          color: white;
+          font-family: Garamond;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .bottom-images {
+      width: 100%;
+      margin: 1rem 0 3rem;
+      display: grid;
+      grid-template-columns: repeat(7, 5rem);
+      grid-gap: .25rem;
+      place-items: center;
+      place-content: center;
+      .bottom-image {
+        height: 5rem;
+        width: 5rem;
+        margin: 0 .5rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+
+        
+        &:after {
+          content: '';
+          height: 100%;
+          width: 100%;
+          background-color: rgba($font-cool, .4);
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: .3s;
+        }
+
+        &:hover {
+          cursor: pointer;
+          &:after {
+            background-color: rgba($font-cool, 0.1);
+          }
+        }
+      }
+    }
+  }
+}

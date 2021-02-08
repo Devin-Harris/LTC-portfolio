@@ -1,0 +1,92 @@
+.Contact {
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: calc(90vh - 10rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: $font-cool;
+
+  p {
+    font-family: Garamond;
+  }
+  
+  h2 {
+    font-family: Garamond;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+  
+  .form-container {
+    margin: 1rem;
+
+    .name, .email, .message, .submit-button {
+      input, textarea {
+        color: $font-cool;
+        outline: none;
+        font-family: Garamond;
+        margin: .25rem;
+        margin-left: 0;
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border: 1px solid $font-cool;
+        border-radius: .15rem;
+
+        &:placeholder {
+          color: $backgroung-dark-cool;
+        }
+      }
+    }
+
+    .name {
+      #lname {
+        margin-right: 0;
+      }
+    }
+
+    .email {
+      input {
+        width: 100%;
+      }
+    }
+
+    .message {
+      #message {
+        width: 100%;
+        min-height: 2.5rem;
+        resize: vertical;
+      }
+    }
+
+    .submit-button {
+      width: 100%;
+
+      button {
+        margin: 1rem auto;
+        display: block;
+        border: none;
+        outline: none;
+        padding: .5rem 1.75rem;
+        font-family: Garamond;
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: white;
+        
+        &.enabled {
+          background-color: $font-cool;
+          transition: .3s;
+          cursor: pointer;
+          &:hover {
+            background-color: $backgroung-light-cool;
+          }
+        }
+
+        &.disabled {
+          background-color: $backgroung-light-cool;
+        }
+      }
+    }
+  }
+}

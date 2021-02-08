@@ -1,0 +1,158 @@
+.editor {
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: calc(90vh - 10rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: $font-cool;
+
+  p {
+    font-family: Garamond;
+  }
+  
+  h2 {
+    font-family: Garamond;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+  }
+  
+  .home-button {
+    margin: 2rem auto;
+    display: block;
+    border: none;
+    outline: none;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    font-family: Garamond;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: white;
+    background-color: $font-cool;
+    transition: .3s;
+    cursor: pointer;
+    i {
+      font-size: 1rem;
+      color: white;
+    }
+    &:hover {
+      background-color: $backgroung-light-cool;
+    }
+  }
+
+  .form-container {
+    margin: 1rem;
+
+    .inputs, .submit-button {
+      input, textarea {
+        color: $font-cool;
+        outline: none;
+        font-family: Garamond;
+        margin: .25rem;
+        margin-left: 0;
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border: 1px solid $font-cool;
+        border-radius: .15rem;
+        width: 100%;
+        min-height: 2.5rem;
+        resize: vertical;
+
+        &:placeholder {
+          color: $backgroung-dark-cool;
+        }
+      }
+    }
+
+    .inputs {
+      button {
+        display: block;
+        border: none;
+        outline: none;
+        padding: .55rem 2.5rem;
+        font-family: Garamond;
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: white;
+        background-color: $font-cool;
+        transition: .3s;
+        
+        &.enabled {
+          cursor: pointer;
+          &:hover {
+            background-color: $backgroung-light-cool;
+          }
+        }
+        
+        &.disabled {
+          background-color: $backgroung-light-cool;
+        }
+      }
+    }
+
+    .image-to-add-showcase {
+      margin: 1rem 0;
+
+      p {
+        color: $backgroung-light-cool;
+        font-size: 1.25rem;
+        font-family: Garamond;
+        font-weight: bold;
+        margin-bottom: .5rem;
+      }
+
+      .image-showcase-container {
+        display: grid;
+        grid-template-columns: repeat(9, 5rem);
+        grid-gap: .5rem;
+        .image-showcase {
+          height: 5rem;
+          width: 5rem;
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    .submit-button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      input {
+        width: auto;
+        flex-grow: 1;
+      }
+      button {
+        margin: 1rem auto;
+        display: block;
+        border: none;
+        outline: none;
+        padding: .55rem 1.5rem;
+        font-family: Garamond;
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: white;
+        
+        &.enabled {
+          background-color: $font-cool;
+          transition: .3s;
+          cursor: pointer;
+          &:hover {
+            background-color: $backgroung-light-cool;
+          }
+        }
+
+        &.disabled {
+          background-color: $backgroung-light-cool;
+        }
+      }
+    }
+  }
+  
+}

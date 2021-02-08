@@ -1,0 +1,46 @@
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: 100vw;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    color: $font-cool;
+    font-family: Garamond;
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    p {
+      font-family: Garamond;
+      font-weight: bold;
+      font-size: 2rem;
+      margin: 0 .5rem;
+      color: $backgroung-light-cool;
+      transition: .3s;
+  
+      &:hover {
+        cursor: pointer;
+        color: $font-cool;
+      }
+  
+      &.active {
+        color: $font-cool;
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+}

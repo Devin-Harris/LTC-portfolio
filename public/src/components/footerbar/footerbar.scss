@@ -1,0 +1,16 @@
+.footerbar {
+  background-color: $backgroung-light-cool;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-family: Garamond;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0 .5rem;
+    color: white;
+  }
+}
