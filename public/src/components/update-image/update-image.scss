@@ -1,0 +1,54 @@
+.update-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: max-content;
+  margin: 2rem 0;
+
+  .image-showcase {
+    height: 10rem;
+    width: 10rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    &:hover {
+      cursor: default !important;
+    }
+    
+    &:after {
+      height: 0 !important;
+      width: 0 !important;
+    }
+  }
+
+  .inputs-container {
+    width: calc(100% - 10rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: .25rem 1rem;
+    margin-right: 0;
+    margin-top: 0;
+    
+    input, textarea {
+      color: $font-cool;
+      outline: none;
+      font-family: Garamond;
+      margin: .5rem 1rem;
+      margin-top: 0;
+      padding: .5rem 1rem;
+      font-size: 1.25rem;
+      border: 1px solid $font-cool;
+      border-radius: .15rem;
+      width: 100%;
+      resize: vertical;
+
+      &:placeholder {
+        color: $backgroung-dark-cool;
+      }
+    }
+  }
+}

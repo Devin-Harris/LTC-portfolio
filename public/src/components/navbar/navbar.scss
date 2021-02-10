@@ -1,5 +1,6 @@
 .navbar-container {
   position: fixed;
+  z-index: 5;
   top: 0;
   left: 0;
   background-color: white;
@@ -22,6 +23,30 @@
     justify-content: center;
     align-items: center;
   
+    .home-button {
+      margin: 0 .5rem;
+      display: block;
+      border: none;
+      outline: none;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      font-family: Garamond;
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: white;
+      background-color: $backgroung-light-cool;
+      transition: .3s;
+      cursor: pointer;
+      i {
+        font-size: 1rem;
+        color: white;
+      }
+      &:hover {
+        background-color: $font-cool;
+      }
+    }
+
     p {
       font-family: Garamond;
       font-weight: bold;

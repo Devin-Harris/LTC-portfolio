@@ -8,12 +8,12 @@ export default {
       images: [],
       mainImage: {},
       mainImageRatio: 0,
-      loading: true
+      loading: true,
+      tilesShown: true
     }
   },
   async created() {
-    const response = await this.fetchImages()
-    this.images = await response.json()
+    this.images  = await this.fetchImages()
     this.mainImage = this.images[0]
     this.loading = false
   },
@@ -22,7 +22,7 @@ export default {
       const img = new Image();
       img.src = this.getImageSrc(this.mainImage.link_id);
       img.onload = () => { this.mainImageRatio = this.getRatio(img.width, img.height) } 
-      return `calc(${this.mainImageRatio} * 25rem)`
+      return `calc(${this.mainImageRatio} * ${this.tilesShown ? 25 : 35}rem)`
     },
     colCount() {
       let maxCol = 8
@@ -54,5 +54,8 @@ export default {
       if (imgIdx === this.images.length - 1) this.mainImage = this.images[0]
       else this.mainImage = this.images[imgIdx + 1]
     },
+    toggleTiles() {
+      this.tilesShown = !this.tilesShown
+    }
   }
 }

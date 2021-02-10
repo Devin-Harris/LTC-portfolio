@@ -34,9 +34,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        width: 110%;
         height: 25rem;
         position: absolute;
+        left: -5%;
         i {
           font-size: 2rem;
           color: $backgroung-light-cool;
@@ -55,6 +56,7 @@
         transform: translate(-50%);
         background-color: rgba($font-cool, .6);
         padding: .5rem 1rem;
+        max-width: 40vw;
 
         p {
           color: white;
@@ -62,11 +64,36 @@
           font-size: 1rem;
         }
       }
+
+      &-tall {
+        height: 35rem;
+        .arrows {
+          height: 35rem;
+        }
+      }
+    }
+
+    .show-hide-tiles {
+      width: 40vw;
+      margin: 1rem 0 .25rem;
+      p {
+        text-align: center;
+        margin: 0 auto;
+        width: max-content;
+        color: $backgroung-light-cool;
+        font-family: Garamond;
+        font-weight: bold;
+        transition: .3s;
+        &:hover {
+          cursor: pointer;
+          color: $font-cool;
+        }
+      }
     }
 
     .bottom-images {
       width: 100%;
-      margin: 1rem 0 3rem;
+      margin: 0 0 3rem;
       display: grid;
       grid-template-columns: repeat(7, 5rem);
       grid-gap: .25rem;

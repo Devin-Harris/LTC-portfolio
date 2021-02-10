@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     links() {
-      if (this.$route.name === 'Editor') return ['Add', 'Update']
+      if (this.$route.name === 'Editor') return ['Home', 'Add', 'Update']
       else return ['Home', 'Gallery', 'Bio', 'Contact']
     },
     navTitle() {

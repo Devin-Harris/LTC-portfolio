@@ -7,7 +7,8 @@ export default {
   },
   methods: {
     navigateToLink(link) {
-      if (this.$route.name === 'Editor') this.$router.push(`/editor/${link}`)
+      if (link === 'Home') this.$router.push({ name: link })
+      else if (this.$route.name === 'Editor') this.$router.push(`/editor/${link}`)
       else this.$router.push({name: link})
     }
   }

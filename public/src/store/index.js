@@ -16,8 +16,8 @@ export default new Vuex.Store({
       const response = await fetch(baseUrl, {
         method: 'GET'
       })
-
-      return response
+      const json = await response.json()
+      return json
     },
     async addImages({}, {imagesToAdd, securityKey}) {
       let baseUrl = 'https://larissa-cullen-portfolio.herokuapp.com/add-images'
@@ -31,7 +31,8 @@ export default new Vuex.Store({
         body: JSON.stringify({imagesToAdd, securityKey})
       })
 
-      return response
+      const json = await response.json()
+      return json
     }
   },
   modules: {

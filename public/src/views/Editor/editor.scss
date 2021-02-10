@@ -9,6 +9,27 @@
   align-items: center;
   color: $font-cool;
 
+  .status-container {
+    height: inherit;
+    min-height: inherit;
+    margin-top: -5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: 1.5rem;
+      color: $backgroung-light-cool;
+      transition: .3s;
+      cursor: pointer;
+
+      &:hover {
+        color: $font-cool
+      }
+    }
+  }
+
   p {
     font-family: Garamond;
   }
@@ -18,30 +39,6 @@
     font-weight: bold;
     font-size: 3rem;
     text-align: center;
-  }
-  
-  .home-button {
-    margin: 2rem auto;
-    display: block;
-    border: none;
-    outline: none;
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
-    font-family: Garamond;
-    font-weight: bold;
-    font-size: 1.25rem;
-    color: white;
-    background-color: $font-cool;
-    transition: .3s;
-    cursor: pointer;
-    i {
-      font-size: 1rem;
-      color: white;
-    }
-    &:hover {
-      background-color: $backgroung-light-cool;
-    }
   }
 
   .form-container {
@@ -59,7 +56,6 @@
         border: 1px solid $font-cool;
         border-radius: .15rem;
         width: 100%;
-        min-height: 2.5rem;
         resize: vertical;
 
         &:placeholder {
@@ -92,6 +88,24 @@
           background-color: $backgroung-light-cool;
         }
       }
+
+      .copyright-container {
+        margin: .25rem 0;
+        span {
+          display: flex;
+          align-items: center;
+          color: $backgroung-light-cool;
+          transition: .3s;
+          cursor: pointer;
+          font-size: 1.2rem;
+          font-family: Garamond;
+          margin: 0 .25rem 0 0;
+
+          &:hover {
+            color: $font-cool
+          }
+        }
+      }
     }
 
     .image-to-add-showcase {
@@ -108,15 +122,41 @@
       .image-showcase-container {
         display: grid;
         grid-template-columns: repeat(9, 5rem);
-        grid-gap: .5rem;
+        grid-gap: .75rem;
         .image-showcase {
           height: 5rem;
           width: 5rem;
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
+          position: relative;
+
+          .remove-image-button {
+            position: absolute;
+            top: -.5rem;
+            right: -.5rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $backgroung-light-cool;
+            color: white;
+            transition: .3s;
+            cursor: pointer;
+            
+            &:hover {
+              background-color: $font-cool;
+            }
+          }
         }
       }
+    }
+
+    .update-images {
+      width: 100%;
+      margin: 3rem 0 0 0;
     }
 
     .submit-button {
@@ -124,6 +164,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: 5rem;
       input {
         width: auto;
         flex-grow: 1;
@@ -154,5 +195,26 @@
       }
     }
   }
-  
+ 
+  .update-container {
+    .image-showcase {
+      &:after {
+        content: '';
+        height: 100%;
+        width: 100%;
+        background-color: rgba($font-cool, .4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: .3s;
+      }
+
+      &:hover {
+        cursor: pointer;
+        &:after {
+          background-color: rgba($font-cool, 0.1);
+        }
+      }
+    }
+  }
 }

@@ -34,7 +34,7 @@ const routes = [
     redirect: '/editor/Add'
   },
   {
-    path: '/editor/:type?',
+    path: '/editor/:type?/:status?',
     name: 'Editor',
     component: Editor
   },

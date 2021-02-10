@@ -4,7 +4,7 @@
       <i class="fas fa-spinner fa-spin"></i>
     </div>
     <div class="images-container" v-else>
-      <div class="main-image" :style="{'background-image': `url(${getImageSrc(mainImage.link_id)}`}">
+      <div class="main-image" :class="{'main-image-tall': !tilesShown}" :style="{'background-image': `url(${getImageSrc(mainImage.link_id)}`}">
         <div class="arrows">
           <i class="fas fa-chevron-left" @click="prevImage"></i>
           <i class="fas fa-chevron-right" @click="nextImage"></i>
@@ -14,7 +14,10 @@
           <p>{{mainImage.copyright}}</p>
         </div>
       </div>
-      <div class="bottom-images" :style="{'grid-template-columns': `repeat(${colCount}, 5rem)`}">
+      <div class="show-hide-tiles">
+        <p @click="toggleTiles">{{tilesShown ? 'Hide Tiles' : 'Show Tiles'}}</p>
+      </div>
+      <div v-if="tilesShown" class="bottom-images" :style="{'grid-template-columns': `repeat(${colCount}, 5rem)`}">
         <div
           class="bottom-image"
           v-for="image in images"
