@@ -8,7 +8,7 @@
     min-height: inherit;
     text-align: center;
     font-size: 6rem;
-    color: $backgroung-light-cool;
+    color: $background-light-cool;
     i {
       margin-bottom: 10rem;
     }
@@ -40,7 +40,7 @@
         left: -5%;
         i {
           font-size: 2rem;
-          color: $backgroung-light-cool;
+          color: $background-light-cool;
           transition: .3s;
           &:hover {
             cursor: pointer;
@@ -80,7 +80,7 @@
         text-align: center;
         margin: 0 auto;
         width: max-content;
-        color: $backgroung-light-cool;
+        color: $background-light-cool;
         font-family: Garamond;
         font-weight: bold;
         transition: .3s;

@@ -35,7 +35,9 @@ export default {
   methods: {
     ...mapActions([
       'addImages',
-      'fetchImages'
+      'updateImages',
+      'fetchImages',
+      'fetchImage'
     ]),
     getImageSrc(linkId) {
       if (!linkId) return
@@ -48,6 +50,13 @@ export default {
 
       this.imagesToAdd = []
       this.clearAddFields()
+    },
+    async applyUpdateChanges() {
+      this.status = await this.updateImages({ imagesToUpdate: this.imagesToUpdate, securityKey: this.securityKey })
+      if (this.status.status === 200) this.$router.push({ name: this.$route.name, params: { type: this.$route.params.type, status: 'success' } })
+      else if (this.status.status === 400) this.$router.push({ name: this.$route.name, params: { type: this.$route.params.type, status: 'fail' } })
+
+      this.imagesToUpdate = []
     },
     clearAddFields() {
       this.currentLink = ''
@@ -72,11 +81,13 @@ export default {
       const date = new Date(Date.now())
       this.currentCopyright = `Copyright © ${date.getFullYear()} Larissa Thayer Cullen. All rights reserved.`
     },
-    handleStatusAction() {
+    async handleStatusAction() {
       if (this.status.status === 200) this.$router.push('/gallery')
       else  {
         this.status = {}
         this.$router.push({name: this.$route.name, params: { type: this.$route.params.type } })
+        if (this.$route.params.type === 'Update')
+          this.gallery = await this.fetchImages()
       }
     },
     updateImage(image) {
@@ -84,16 +95,24 @@ export default {
       this.gallery = this.gallery.filter(img => img._id !== image._id)
     },
     handleGoogleLinkChange(img, e) {
-      console.log(e.target.value)
       this.imagesToUpdate.forEach(i => {
         if (i._id === img._id) i.link_id = e.target.value
       })
     },
     handleInfoChange(img, e) {
-
+      this.imagesToUpdate.forEach(i => {
+        if (i._id === img._id) i.info = e.target.value
+      })
     },
     handleCopyrightChange(img, e) {
-
+      this.imagesToUpdate.forEach(i => {
+        if (i._id === img._id) i.copyright = e.target.value
+      })
+    },
+    async revertChanges(img) {
+      const [response] = await this.fetchImage(img)
+      this.gallery.push(response)
+      this.imagesToUpdate = this.imagesToUpdate.filter(i => i._id !== response._id)
     }
   }
 }

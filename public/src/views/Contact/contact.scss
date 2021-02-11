@@ -35,7 +35,7 @@
         border-radius: .15rem;
 
         &:placeholder {
-          color: $backgroung-dark-cool;
+          color: $background-dark-cool;
         }
       }
     }
@@ -79,12 +79,12 @@
           transition: .3s;
           cursor: pointer;
           &:hover {
-            background-color: $backgroung-light-cool;
+            background-color: $background-light-cool;
           }
         }
 
         &.disabled {
-          background-color: $backgroung-light-cool;
+          background-color: $background-light-cool;
         }
       }
     }

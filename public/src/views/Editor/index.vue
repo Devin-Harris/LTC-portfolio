@@ -70,13 +70,14 @@
             @google-link-change="handleGoogleLinkChange(img, $event)"
             @info-change="handleInfoChange(img, $event)"
             @copyright-change="handleCopyrightChange(img, $event)"
+            @revert-changes="revertChanges(img)"
           >
           </update-image>
         </div>
 
         <div class="submit-button">
           <input type="password" placeholder="Security password..." v-model="securityKey">
-          <button type="submit" :class="updateSubmitDisabled ? 'disabled' : 'enabled'" @click="applyAddChanges">Apply Changes...</button>
+          <button type="submit" :class="updateSubmitDisabled ? 'disabled' : 'enabled'" @click="applyUpdateChanges">Apply Changes...</button>
         </div>
       </form>
     </div>
