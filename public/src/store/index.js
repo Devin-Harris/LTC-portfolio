@@ -58,6 +58,21 @@ export default new Vuex.Store({
 
       const json = await response.json()
       return json
+    },
+    async deleteImages({}, {imagesToDelete, securityKey}) {
+      let baseUrl = 'https://larissa-cullen-portfolio.herokuapp.com/delete-images'
+      if (window.location.hostname === 'localhost') baseUrl = 'http://localhost:3000/delete-images'
+
+      const response = await fetch(baseUrl, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({imagesToDelete, securityKey})
+      })
+
+      const json = await response.json()
+      return json
     }
   },
   modules: {

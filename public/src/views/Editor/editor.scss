@@ -217,4 +217,61 @@
       }
     }
   }
+
+  .delete-container {
+    .image-showcase {
+      position: relative;
+
+      .x-icon {
+        text-align: center;
+        vertical-align: middle;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: FelixTitling;
+        font-size: 1rem;
+        color: $font-cool;
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: white;
+        border-radius: 50%;
+        line-height: 1.5rem;
+        z-index: 5;
+        opacity: 0;
+        transition: .3s;
+      }
+
+      &:after {
+        content: '';
+        height: 100%;
+        width: 100%;
+        background-color: rgba($font-cool, 0.1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: .3s;
+      }
+      
+      &:hover {
+        cursor: pointer;
+
+        .x-icon {
+          opacity: 1;
+        }
+        &:after {
+          background-color: rgba($font-cool, .4);
+        }
+      }
+
+      &.delete-image {
+        .x-icon {
+          opacity: 1;
+        }
+        &:after {
+          background-color: rgba($font-cool, .8);
+        }
+      }
+    }
+  }
 }

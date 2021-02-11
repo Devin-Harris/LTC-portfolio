@@ -82,6 +82,32 @@
       </form>
     </div>
 
+    <div v-else-if="$route.params.type === 'Delete'" class="delete-container">
+      <h2>Delete Images</h2>
+      <form class="form-container" @submit.prevent>
+        <div div class="image-to-add-showcase" v-if="gallery.length > 0">
+          <p>Select Images to delete...</p>
+          <div class="image-showcase-container">
+            <div
+              class="image-showcase"
+              :class="{'delete-image': imagesToDelete.includes(image)}"
+              v-for="image in gallery"
+              :key="image.link_id"
+              :style="{'background-image': `url(${getImageSrc(image.link_id)}`}"
+              @click="toggleDeleteImage(image)"
+            >
+              <div class="x-icon">x</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="submit-button">
+          <input type="password" placeholder="Security password..." v-model="securityKey">
+          <button type="submit" :class="deleteSubmitDisabled ? 'disabled' : 'enabled'" @click="applyDeleteChanges">Apply Changes...</button>
+        </div>
+      </form>
+    </div>
+
   </div>
 </template>
 

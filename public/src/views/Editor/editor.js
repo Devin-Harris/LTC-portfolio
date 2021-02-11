@@ -15,7 +15,8 @@ export default {
       securityKey: '',
       status: {},
       gallery: [],
-      imagesToUpdate: []
+      imagesToUpdate: [],
+      imagesToDelete: []
     }
   },
   async created() {
@@ -30,12 +31,16 @@ export default {
     },
     addIsDisabled() {
       return !(this.getIdFromLink(this.currentLink) && this.currentCopyright && this.currentInfo)
+    },
+    deleteSubmitDisabled() {
+      return !(this.securityKey && this.imagesToDelete.length !== 0)
     }
   },
   methods: {
     ...mapActions([
       'addImages',
       'updateImages',
+      'deleteImages',
       'fetchImages',
       'fetchImage'
     ]),
@@ -57,6 +62,13 @@ export default {
       else if (this.status.status === 400) this.$router.push({ name: this.$route.name, params: { type: this.$route.params.type, status: 'fail' } })
 
       this.imagesToUpdate = []
+    },
+    async applyDeleteChanges() {
+      this.status = await this.deleteImages({ imagesToDelete: this.imagesToDelete, securityKey: this.securityKey })
+      if (this.status.status === 200) this.$router.push({ name: this.$route.name, params: { type: this.$route.params.type, status: 'success' } })
+      else if (this.status.status === 400) this.$router.push({ name: this.$route.name, params: { type: this.$route.params.type, status: 'fail' } })
+
+      this.imagesToDelete = []
     },
     clearAddFields() {
       this.currentLink = ''
@@ -93,6 +105,10 @@ export default {
     updateImage(image) {
       this.imagesToUpdate.push(image)
       this.gallery = this.gallery.filter(img => img._id !== image._id)
+    },
+    toggleDeleteImage(image) {
+      if (this.imagesToDelete.includes(image)) this.imagesToDelete = this.imagesToDelete.filter(img => img._id !== image._id)
+      else this.imagesToDelete.push(image)
     },
     handleGoogleLinkChange(img, e) {
       this.imagesToUpdate.forEach(i => {
