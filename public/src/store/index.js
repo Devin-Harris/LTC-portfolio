@@ -73,6 +73,21 @@ export default new Vuex.Store({
 
       const json = await response.json()
       return json
+    },
+    async formSubmission({}, { firstName, lastName, email, message, subject }) {
+      let baseUrl = 'https://larissa-cullen-portfolio.herokuapp.com/form-submission'
+      if (window.location.hostname === 'localhost') baseUrl = 'http://localhost:3000/form-submission'
+      
+      const response = await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ firstName, lastName, email, message, subject })
+      })
+
+      const json = await response.json()
+      return json
     }
   },
   modules: {
