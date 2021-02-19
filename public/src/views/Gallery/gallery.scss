@@ -51,16 +51,16 @@
     }
 
     .info {
-        padding: .5rem 1rem;
-        width: max-content;
-        text-align: center;
+      padding: .5rem 1rem;
+      width: max-content;
+      text-align: center;
 
-        p {
-          color: $font-cool;
-          font-family: Garamond;
-          font-size: 1rem;
-        }
+      p {
+        color: $font-cool;
+        font-family: Garamond;
+        font-size: 1rem;
       }
+    }
 
       &-tall {
         height: 35rem;
@@ -121,6 +121,83 @@
           &:after {
             background-color: rgba($font-cool, 0.1);
           }
+        }
+      }
+    }
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  .gallery {
+    .images-container {
+      width: 50vw;
+      .show-hide-tiles {
+          width: 50vw;
+      }
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .gallery {
+    .images-container {
+      width: 60vw;
+      .show-hide-tiles {
+          width: 60vw;
+      }
+      .bottom-images {
+        grid-template-columns: repeat(4, 10rem) !important;
+        .bottom-image { 
+          height: 10rem;
+          width: 10rem;
+        }
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  .gallery {
+    .images-container {
+      width: 80vw;
+      .show-hide-tiles {
+          width: 80vw;
+      }
+      .bottom-images {
+        grid-template-columns: repeat(3, 10rem) !important;
+        .bottom-image { 
+          height: 10rem;
+          width: 10rem;
+        }
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  .gallery {
+    .images-container {
+      .bottom-images {
+        grid-template-columns: repeat(2, 10rem) !important;
+        .bottom-image { 
+          height: 10rem;
+          width: 10rem;
+        }
+      }
+      .info {
+        width: 100%;
+      }
+      .main-image {
+        height: 15rem;
+        .arrows {
+          height: 15rem;
         }
       }
     }

@@ -26,3 +26,31 @@
     margin: 1rem 0;
   }
 }
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  .Bio {
+    width: 60vw;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .Bio {
+    width: 70vw;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+ .Bio {
+    width: 80vw;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+}
