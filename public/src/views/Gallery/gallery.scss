@@ -48,18 +48,15 @@
           }
         }
       }
+    }
 
-      .info {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%);
-        background-color: rgba($font-cool, .6);
+    .info {
         padding: .5rem 1rem;
-        max-width: 40vw;
+        width: max-content;
+        text-align: center;
 
         p {
-          color: white;
+          color: $font-cool;
           font-family: Garamond;
           font-size: 1rem;
         }
@@ -71,7 +68,6 @@
           height: 35rem;
         }
       }
-    }
 
     .show-hide-tiles {
       width: 40vw;

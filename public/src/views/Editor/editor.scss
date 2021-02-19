@@ -30,6 +30,48 @@
     }
   }
 
+  .cards {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card {
+      margin: .5rem;
+      width: 15rem;
+      border-radius: .25rem;
+      height: 10rem;
+      padding: 1rem;
+      border: 1px solid $background-light-cool;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: .3s;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $background-light-cool;
+        h4, i {
+          color: white;
+        }
+      }
+
+      h4 {
+        font-family: Garamond;
+        font-weight: normal;
+        font-size: 1.75rem;
+        margin: .25rem 0;
+        color: $font-cool;
+        transition: .3s;
+      }
+      i {
+        margin: .25rem 0;
+        font-size: 1.5rem;
+        transition: .3s;
+      }
+    }
+  }
+
   p {
     font-family: Garamond;
   }
@@ -39,6 +81,47 @@
     font-weight: bold;
     font-size: 3rem;
     text-align: center;
+  }
+
+  .bio-container {
+    width: 100%;
+
+    .text-chunk {
+      width: 100%;
+
+      .buttons {
+        i {
+          color: $background-light-cool;
+          margin-right: .5rem;
+          transition: .3s;
+          cursor: pointer;
+
+          &:hover {
+            color: $font-cool;
+          }
+        }
+      }
+    }
+
+    .new-block {
+      transition: .3s;
+      cursor: pointer;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.25rem;
+      background-color: $background-light-cool;
+      border: 1px solid $background-light-cool;
+      color: white;
+
+      &:hover {
+        background-color: white;
+        color: $font-cool;
+      }
+
+      span {
+        margin-left: .5rem;
+      }
+    }
   }
 
   .form-container {
@@ -65,6 +148,7 @@
     }
 
     .inputs {
+      width: 100%;
       button {
         display: block;
         border: none;
@@ -87,6 +171,10 @@
         &.disabled {
           background-color: $background-light-cool;
         }
+      }
+
+      .text-chunk {
+        width: 100%;
       }
 
       .copyright-container {

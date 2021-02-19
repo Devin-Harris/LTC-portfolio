@@ -9,6 +9,31 @@ export default new Vuex.Store({
   mutations: {
   },
   actions: {
+    async fetchBio() {
+      let baseUrl = 'https://larissa-cullen-portfolio.herokuapp.com/bio'
+      if (window.location.hostname === 'localhost') baseUrl = 'http://localhost:3000/bio'
+
+      const response = await fetch(baseUrl, {
+        method: 'GET'
+      })
+      const json = await response.json()
+      return json
+    },
+    async updateBio({ }, { bio, securityKey }) {
+      let baseUrl = 'https://larissa-cullen-portfolio.herokuapp.com/update-bio'
+      if (window.location.hostname === 'localhost') baseUrl = 'http://localhost:3000/update-bio'
+
+      const response = await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ bio, securityKey })
+      })
+
+      const json = await response.json()
+      return json
+    },
     async fetchImages() {
       let baseUrl = 'https://larissa-cullen-portfolio.herokuapp.com/images'
       if (window.location.hostname === 'localhost') baseUrl = 'http://localhost:3000/images'

@@ -33,11 +33,14 @@ export default {
   },
   computed: {
     links() {
-      if (this.$route.name === 'Editor') return ['Home', 'Add', 'Update', 'Delete']
+      if (this.$route.name === 'Editor') {
+        if (!this.$route.params.type || this.$route.params.type == 'Bio') return ['Home']
+        else return ['Home', 'Add', 'Update', 'Delete']
+      }
       else return ['Home', 'Gallery', 'Bio', 'Contact']
     },
     navTitle() {
-      if (this.$route.name === 'Editor') return 'Gallery Editor'
+      if (this.$route.name === 'Editor') return 'Editor'
       else return ''
     }
   }

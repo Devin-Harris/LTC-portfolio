@@ -30,10 +30,6 @@ const routes = [
     component: Contact
   },
   {
-    path: '/editor',
-    redirect: '/editor/Add'
-  },
-  {
     path: '/editor/:type?/:status?',
     name: 'Editor',
     component: Editor

@@ -9,10 +9,10 @@
           <i class="fas fa-chevron-left" @click="prevImage"></i>
           <i class="fas fa-chevron-right" @click="nextImage"></i>
         </div>
-        <div class="info" :style="{'width': getImageWidth}">
-          <p>{{mainImage.info}}</p>
-          <p>{{mainImage.copyright}}</p>
-        </div>
+      </div>
+      <div class="info">
+        <p>{{mainImage.info}}</p>
+        <p>{{mainImage.copyright}}</p>
       </div>
       <div class="show-hide-tiles">
         <p @click="toggleTiles">{{tilesShown ? 'Hide Tiles' : 'Show Tiles'}}</p>

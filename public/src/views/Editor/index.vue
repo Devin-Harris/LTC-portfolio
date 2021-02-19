@@ -6,6 +6,39 @@
       <p @click="handleStatusAction">{{status.status === 200 ? 'View gallery' : 'Try again'}}</p>
     </div>
 
+    <div class="cards" v-else-if="!$route.params.type">
+      <div class="card" @click="$router.push({name: 'Editor', params: {type: 'Add'}})">
+        <h4>Gallery Editor</h4>
+        <i class="fas fa-file-image"></i>
+      </div>
+      <div class="card" @click="$router.push({name: 'Editor', params: {type: 'Bio'}})">
+        <h4>Bio Editor</h4>
+        <i class="fas fa-paragraph"></i>
+      </div>
+    </div>
+
+    <div class="bio-container" v-else-if="$route.params.type === 'Bio'">
+      <h2>Bio Editor</h2>
+      <form class="form-container" @submit.prevent>
+        <div class="inputs" ref="bioEditorTextContainer">
+          <div class="text-chunk" v-for="text in bio" :key="text._id">
+            <div class="buttons">
+              <i class="fas fa-caret-up" @click="moveBlock(text, 'up')"></i>
+              <i class="fas fa-caret-down" @click="moveBlock(text, 'down')"></i>
+              <i class="fas fa-times" @click="removeBlock(text)"></i>
+            </div>
+            <textarea v-model="text.block_text" cols="30" :rows="text.block_text ? Math.floor(text.block_text.length / 60 - 1) : 1"></textarea>
+          </div>
+          <p class="new-block" @click="addNewBlock">Add a new block of text <span><i class="fas fa-paragraph"></i></span></p>
+        </div>
+
+        <div class="submit-button">
+          <input type="password" placeholder="Security password..." v-model="securityKey">
+          <button type="submit" :class="bioSubmitDisabled ? 'disabled' : 'enabled'" @click="applyBioChanges">Apply Changes...</button>
+        </div>
+      </form>
+    </div>
+
     <div v-else-if="$route.params.type === 'Add'" class="add-container">
       <h2>Add Images</h2>
       <form class="form-container" @submit.prevent>

@@ -15,12 +15,14 @@ export default {
       securityKey: '',
       status: {},
       gallery: [],
+      bio: [],
       imagesToUpdate: [],
       imagesToDelete: []
     }
   },
   async created() {
     this.gallery = await this.fetchImages()
+    this.bio = await this.fetchBio()
   },
   computed: {
     addSubmitDisabled() {
@@ -34,6 +36,9 @@ export default {
     },
     deleteSubmitDisabled() {
       return !(this.securityKey && this.imagesToDelete.length !== 0)
+    },
+    bioSubmitDisabled() {
+      return !(this.securityKey && this.bio.length !== 0)
     }
   },
   methods: {
@@ -42,7 +47,9 @@ export default {
       'updateImages',
       'deleteImages',
       'fetchImages',
-      'fetchImage'
+      'fetchImage',
+      'fetchBio',
+      'updateBio'
     ]),
     getImageSrc(linkId) {
       if (!linkId) return
@@ -70,6 +77,11 @@ export default {
 
       this.imagesToDelete = []
     },
+    async applyBioChanges() {
+      this.status = await this.updateBio({ bio: this.bio, securityKey: this.securityKey })
+      if (this.status.status === 200) this.$router.push({ name: this.$route.name, params: { type: this.$route.params.type, status: 'success' } })
+      else if (this.status.status === 400) this.$router.push({ name: this.$route.name, params: { type: this.$route.params.type, status: 'fail' } })
+    },
     clearAddFields() {
       this.currentLink = ''
       this.currentInfo = ''
@@ -94,12 +106,17 @@ export default {
       this.currentCopyright = `Copyright © ${date.getFullYear()} Larissa Thayer Cullen. All rights reserved.`
     },
     async handleStatusAction() {
-      if (this.status.status === 200) this.$router.push('/gallery')
+      if (this.status.status === 200) {
+        if (this.$route.params.type === 'Bio') this.$router.push('/bio')
+        else this.$router.push('/gallery')
+      } 
       else  {
         this.status = {}
         this.$router.push({name: this.$route.name, params: { type: this.$route.params.type } })
         if (this.$route.params.type === 'Update')
           this.gallery = await this.fetchImages()
+        if (this.$route.params.type === 'Bio')
+          this.bio = await this.fetchBio()
       }
     },
     updateImage(image) {
@@ -129,6 +146,39 @@ export default {
       const [response] = await this.fetchImage(img)
       this.gallery.push(response)
       this.imagesToUpdate = this.imagesToUpdate.filter(i => i._id !== response._id)
+    },
+    addNewBlock() {
+      this.bio.push({
+        block_sequence: this.bio.length,
+        block_text: ''
+      })
+
+      setTimeout(() => {
+        this.$refs.bioEditorTextContainer.children[this.bio.length - 1].children[1].focus()
+      }, 50)
+    },
+    removeBlock(block) {
+      this.bio = this.bio.filter(b => b.block_text !== block.block_text)
+    },
+    moveBlock(block, dir) {
+      if (dir === 'up' && block.block_sequence === 0) return
+      if (dir === 'down' && block.block_sequence === this.bio.length - 1) return
+
+      let blockToSwitch = {}
+      if (dir === 'up') blockToSwitch = this.bio.find(b => b.block_sequence === block.block_sequence - 1)
+      else if (dir === 'down') blockToSwitch = this.bio.find(b => b.block_sequence === block.block_sequence + 1)
+
+      let newBio = []
+      this.bio.forEach(b => {
+        if (b === blockToSwitch) {
+          newBio.push({ ...block, block_sequence: blockToSwitch.block_sequence})
+        } else if (b === block) {
+          newBio.push({ ...blockToSwitch, block_sequence: block.block_sequence })
+        } else {
+          newBio.push(b)
+        }
+      })
+      this.bio = newBio
     }
   }
 }
