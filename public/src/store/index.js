@@ -10,8 +10,8 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchBio() {
-      let baseUrl = 'https://larissa-cullen-portfolio.herokuapp.com/bio'
-      if (window.location.hostname === 'localhost') baseUrl = 'http://localhost:3000/bio'
+      let baseUrl = "https://larissa-cullen-portfolio.herokuapp.com/bio"
+      if (window.location.hostname === 'localhost') baseUrl = "http://localhost:3000/bio"
 
       const response = await fetch(baseUrl, {
         method: 'GET'
